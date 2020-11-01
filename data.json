@@ -1,0 +1,32 @@
+{
+    "name":"测试机场",
+    "shadowsocks": [
+        {
+            "name": "测试服 A",
+            "server": "dsfgfd.sdfsadf.gfdg",
+            "port": 50872,
+            "password": "dsghfgh5e4gdfg",
+            "method": "chacha20-ietf-poly1305",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "name": "测试服 B",
+            "server": "sdfsd.asdsaf.sdfsg.com",
+            "port": 25557,
+            "password": "fgjhfdbndfydutyj",
+            "method": "chacha20-ietf-poly1305",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "name": "测试服 C",
+            "server": "dfgsdf.sadgs.sdaffd.com",
+            "port": 443,
+            "password": "dsbnmnbsbgjkhgh",
+            "method": "chacha20-ietf-poly1305",
+            "plugin": "v2ray-plugin",
+            "plugin_opts": "path=/fgdfg/hfgjhfgj/wesdfsdf.php;mux=0;host=fdgfd.dfsd.sfsad.com;tls"
+        }
+    ]
+}
