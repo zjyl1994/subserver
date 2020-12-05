@@ -1,5 +1,13 @@
 {
     "name":"测试机场",
+    "sub_option":{
+        "path":[
+            "/password"
+        ]
+    },
+    "update_option":{
+        "path":"/password"
+    },
     "shadowsocks": [
         {
             "name": "测试服 A",

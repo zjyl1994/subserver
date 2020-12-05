@@ -5,14 +5,15 @@ import (
 	"encoding/json"
 	"hash/crc32"
 	"io/ioutil"
-	"log"
 	"net/url"
 	"strconv"
 )
 
 type DataSource struct {
-	Name        string              `json:"name"`
-	Shadowsocks []ShadowsocksEntity `json:"shadowsocks"`
+	Name         string              `json:"name"`
+	SubOption    SubOpt              `json:"sub_option"`
+	UpdateOption UpdOpt              `json:"update_option"`
+	Shadowsocks  []ShadowsocksEntity `json:"shadowsocks"`
 }
 
 func (ds DataSource) GetShadowsocksNames() []string {
@@ -21,6 +22,14 @@ func (ds DataSource) GetShadowsocksNames() []string {
 		ret[i] = v.Name
 	}
 	return ret
+}
+
+type SubOpt struct {
+	Path []string `json:"path"`
+}
+
+type UpdOpt struct {
+	Path string `json:"path"`
 }
 
 type ShadowsocksEntity struct {
@@ -54,13 +63,14 @@ func (se ShadowsocksEntity) ServerID() string {
 
 var datasource DataSource
 
-func init() {
-	bJSON, err := ioutil.ReadFile("data.json")
+func LoadDataSource(filepath string) error {
+	bJSON, err := ioutil.ReadFile(filepath)
 	if err != nil {
-		log.Fatalln(err.Error())
+		return err
 	}
 	err = json.Unmarshal(bJSON, &datasource)
 	if err != nil {
-		log.Fatalln(err.Error())
+		return err
 	}
+	return nil
 }
