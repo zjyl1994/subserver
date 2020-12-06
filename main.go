@@ -8,19 +8,15 @@ import (
 )
 
 func main() {
-	err := LoadDataSource("data.json")
+	err := LoadDataSource("/app/data/data.json")
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(-1)
 	}
-	// types := []string{"plain", "base64", "sip008", "clash"}
-	// for _, v := range types {
-	// 	fmt.Printf("==== MODE:%s ====\n%s\n", v, GenerateSubscription(v))
-	// }
 	r := gin.Default()
 	r.GET("/*urlPath", SubHandler)
 	r.POST("/*urlPath", UpdateHandler)
-	err = r.Run()
+	err = r.Run(":8080")
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(-1)

@@ -155,11 +155,12 @@ func UpdateHandler(ctx *gin.Context) {
 		_ = ctx.AbortWithError(500, err)
 		return
 	}
-	err = ioutil.WriteFile("data.json", newSubJSON, 0644)
+	err = ioutil.WriteFile("/app/data/data.json", newSubJSON, 0644)
 	if err != nil {
 		_ = ctx.AbortWithError(500, err)
 		return
 	}
+	subCache.Flush()
 	ctx.String(200, "done")
 }
 
